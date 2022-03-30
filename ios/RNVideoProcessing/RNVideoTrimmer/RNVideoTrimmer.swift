@@ -225,21 +225,7 @@ class RNVideoTrimmer: NSObject {
           var transforms: CGAffineTransform?
           transforms = track?.preferredTransform
           transforms = CGAffineTransform(rotationAngle: 0)
-          transforms = transforms?.concatenating(CGAffineTransform(rotationAngle: CGFloat(90.0 * .pi / 180)))
-          track?.preferredTransform = transforms!
-        }
-        else if ( videoOrientation == .down ) {
-          var transforms: CGAffineTransform?
-          transforms = track?.preferredTransform
-          transforms = CGAffineTransform(rotationAngle: 0)
-          transforms = transforms?.concatenating(CGAffineTransform(rotationAngle: CGFloat(270.0 * .pi / 180)))
-          track?.preferredTransform = transforms!
-        }
-        else if ( videoOrientation == .left ) {
-          var transforms: CGAffineTransform?
-          transforms = track?.preferredTransform
-          transforms = CGAffineTransform(rotationAngle: 0)
-          transforms = transforms?.concatenating(CGAffineTransform(rotationAngle: CGFloat(180.0 * .pi / 180)))
+          transforms = transforms?.concatenating(CGAffineTransform(rotationAngle: CGFloat(0.0 * .pi / 180)))
           track?.preferredTransform = transforms!
         }
 
