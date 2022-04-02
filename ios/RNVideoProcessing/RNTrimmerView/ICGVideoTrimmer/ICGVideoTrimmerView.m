@@ -263,7 +263,6 @@
         case UIGestureRecognizerStateChanged:
         {
             CGPoint point = [gesture locationInView:self];
-            CGPoint point = [gesture locationInView:self];
             
             int deltaX = point.x - self.leftStartPoint.x;
             
@@ -393,7 +392,7 @@
         [self seekToTime:start];
     }
     self.startTime = start;
-    
+
     CGFloat end = CGRectGetMinX(self.rightOverlayView.frame) / self.widthPerSecond + (self.scrollView.contentOffset.x - self.thumbWidth) / self.widthPerSecond;
     self.endTime = end;
 

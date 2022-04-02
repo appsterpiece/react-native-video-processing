@@ -27,6 +27,9 @@ NS_ASSUME_NONNULL_BEGIN
 // Minimum length for the trimmed video
 @property (assign, nonatomic) CGFloat minLength;
 
+// Maximum duration of the trimmer view
+@property (assign, nonatomic) CGFloat maxDuration;
+
 // Show ruler view on the trimmer view or not
 @property (assign, nonatomic) BOOL showsRulerView;
 
