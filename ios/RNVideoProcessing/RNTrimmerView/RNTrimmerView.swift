@@ -18,6 +18,7 @@ class RNTrimmerView: RCTView, ICGVideoTrimmerDelegate {
   @objc var onTrackerMove: RCTBubblingEventBlock?
   var _minLength: CGFloat? = nil
   var _maxLength: CGFloat? = nil
+  var _maxDuration: CGFloat? = nil
   var _thumbWidth: CGFloat? = nil
   var _trackerColor: UIColor = UIColor.clear
   var _trackerHandleColor: UIColor = UIColor.clear
@@ -43,6 +44,9 @@ class RNTrimmerView: RCTView, ICGVideoTrimmerDelegate {
   }
   @objc func setCurrentTime(_ val: NSNumber) {
     currentTime = val
+  }
+  @objc func setMaxDuration(_ val: NSNumber) {
+    maxDuration = val
   }
   @objc func setTrackerColor(_ val: NSString) {
     trackerColor = val
@@ -184,6 +188,18 @@ class RNTrimmerView: RCTView, ICGVideoTrimmerDelegate {
         }
     }
     
+    var maxDuration: NSNumber? {
+        set {
+            if newValue != nil && self.trimmerView != nil {
+                let convertedValue = newValue as! CGFloat
+                self._maxDuration = convertedValue
+            }
+        }
+        get {
+            return nil
+        }
+    }
+
     var trackerColor: NSString? {
         set {
             if newValue == nil {
@@ -210,6 +226,7 @@ class RNTrimmerView: RCTView, ICGVideoTrimmerDelegate {
             trimmerView!.trackerColor = self._trackerColor
             trimmerView!.trackerHandleColor = self._trackerHandleColor
             trimmerView!.showTrackerHandle = self._showTrackerHandle
+            trimmerView!.maxDuration = _maxDuration == nil ? 60 : _maxDuration!
             trimmerView!.maxLength = _maxLength == nil ? CGFloat(self.asset.duration.seconds) : _maxLength!
             self.frame = CGRect(x: rect.origin.x, y: rect.origin.y, width: rect.size.width, height: rect.size.height + 20)
             if _minLength != nil {
